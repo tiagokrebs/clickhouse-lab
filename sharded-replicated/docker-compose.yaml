@@ -1,0 +1,82 @@
+version: "3"
+services:
+
+  zookeeper:
+    container_name: "zookeeper"
+    restart: always
+    image: confluentinc/cp-zookeeper:5.4.1
+    hostname: "zookeeper"
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  client:
+    container_name: "client"
+    image: yandex/clickhouse-client
+    command: infinity
+
+  server1:
+    container_name: "server1"
+    image: yandex/clickhouse-server
+    ports:
+      - 8123:8123
+      - 9000:9000
+    depends_on:
+      - zookeeper
+    restart: always
+    volumes:
+      - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
+      - "./conf.d/zookeeper.xml:/etc/clickhouse-server/conf.d/zookeeper.xml"
+      - "./macros/server1.xml:/etc/clickhouse-server/conf.d/macro.xml"
+      - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+    hostname: "server1"
+
+  server2:
+    container_name: "server2"
+    image: yandex/clickhouse-server
+    ports:
+      - 8124:8123
+      - 9001:9000
+    depends_on:
+      - zookeeper
+    restart: always
+    volumes:
+      - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
+      - "./conf.d/zookeeper.xml:/etc/clickhouse-server/conf.d/zookeeper.xml"
+      - "./macros/server2.xml:/etc/clickhouse-server/conf.d/macro.xml"
+      - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+    hostname: "server2"
+
+  server3:
+    container_name: "server3"
+    image: yandex/clickhouse-server
+    ports:
+      - 8125:8123
+      - 9002:9000
+    depends_on:
+      - zookeeper
+    restart: always
+    volumes:
+      - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
+      - "./conf.d/zookeeper.xml:/etc/clickhouse-server/conf.d/zookeeper.xml"
+      - "./macros/server3.xml:/etc/clickhouse-server/conf.d/macro.xml"
+      - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+    hostname: "server3"
+
+  server4:
+    container_name: "server4"
+    image: yandex/clickhouse-server
+    ports:
+      - 8126:8123
+      - 9003:9000
+    depends_on:
+      - zookeeper
+    restart: always
+    volumes:
+      - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
+      - "./conf.d/zookeeper.xml:/etc/clickhouse-server/conf.d/zookeeper.xml"
+      - "./macros/server4.xml:/etc/clickhouse-server/conf.d/macro.xml"
+      - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+    hostname: "server4"

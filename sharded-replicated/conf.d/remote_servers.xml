@@ -1,0 +1,38 @@
+<yandex>
+  <remote_servers replace="replace">
+    <shardedreplicated>
+      <shard>
+        <weight>1</weight>
+        <internal_replication>true</internal_replication>
+        <replica>
+          <host>server1</host>
+          <port>9000</port>
+          <user>default</user>
+          <password></password>
+        </replica>
+        <replica>
+          <host>server2</host>
+          <port>9000</port>
+          <user>default</user>
+          <password></password>
+        </replica>
+      </shard>
+      <shard>
+        <weight>1</weight>
+        <internal_replication>true</internal_replication>
+        <replica>
+          <host>server3</host>
+          <port>9000</port>
+          <user>default</user>
+          <password></password>
+        </replica>
+        <replica>
+          <host>server4</host>
+          <port>9000</port>
+          <user>default</user>
+          <password></password>
+        </replica>
+      </shard>
+    </shardedreplicated>
+  </remote_servers>
+</yandex>

@@ -1,0 +1,6 @@
+<yandex>
+  <macros>
+    <shard>2</shard>
+    <replica>server4</replica>
+  </macros>
+</yandex>

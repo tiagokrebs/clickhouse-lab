@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  client:
+    container_name: "client"
+    image: yandex/clickhouse-client
+    depends_on:
+      - server1
+    command: ['--host', 'server1']
+
+  server1:
+    container_name: "server1"
+    image: yandex/clickhouse-server
+    ports:
+      - 8123:8123
+      - 9000:9000
+    restart: always
+    volumes:
+      - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
+      - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+    hostname: "server1"

@@ -1,0 +1,12 @@
+<yandex>
+  <remote_servers replace="replace">
+    <standalone>
+      <shard>
+        <replica>
+          <host>server1</host>
+          <port>9000</port>
+        </replica>
+      </shard>
+    </standalone>
+  </remote_servers>
+</yandex>
