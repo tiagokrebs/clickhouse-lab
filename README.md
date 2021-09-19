@@ -2,8 +2,8 @@
 
 Place to ~~brake~~ test things before send to the production cluster ¯\\_(ツ)_/¯
 
-- standalone: 1 shard, no replicas, no zookeeper, 1 node
-- sharded-replicated cluster: 2 shards, 2 replicas, zookeeper, 4 nodes
+- standalone: 1 shard, no replicas, no zookeeper, 1 Clickhouse node
+- sharded-replicated cluster: 2 shards, 2 replicas, zookeeper, 4 Clickhouse nodes
 
 ```
 docker-compose up -d
