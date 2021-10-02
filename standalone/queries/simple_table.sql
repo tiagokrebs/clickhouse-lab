@@ -1,4 +1,4 @@
--- Sharded and distributed tables
+-- Simple table
 CREATE TABLE numbers
 (
     numberID UInt8,
