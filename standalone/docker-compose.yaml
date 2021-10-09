@@ -4,8 +4,6 @@ services:
   client:
     container_name: "client"
     image: yandex/clickhouse-client
-    depends_on:
-      - server1
     command: ['--host', 'server1']
 
   server1:
@@ -18,4 +16,5 @@ services:
     volumes:
       - "./conf.d/remote_servers.xml:/etc/clickhouse-server/conf.d/remote_servers.xml"
       - "./users.d/default.xml:/etc/clickhouse-server/users.d/default.xml"
+      - "./example/:/example"
     hostname: "server1"

@@ -23,12 +23,12 @@ Connected to ClickHouse server version 21.9.3 revision 54449.
 
 server1 :)
 ```
-Start looking at the folder `queries`. You should need them for some examples to work.
+Start looking at the `queries` folder. You should need them for some examples to work.
 ## Examples
 
-Some environments have an `example` folder. This should have things from simple configurations to data processing instructions for a certain test dataset.
+Some environments have an `example` folder. It should have things from simple configurations to data processing instructions for a certain test dataset.
 
 Examples:
-- [Starter Access Control Management (Standalone)](standalone/example/access_control/README.md)
-- [Starter Access Control Management on a Cluster](sharded-replicated/example/access_control/README.md)
-- [Stack Overflow Data Processing](standalone/example/stack_overflow/README.md)
+- [Starter Access Control Management (Standalone)](standalone/example/access_control)
+- [Starter Access Control Management on a Cluster](sharded-replicated/example/access_control)
+- [Stack Overflow Data Processing](standalone/example/stack_overflow)
