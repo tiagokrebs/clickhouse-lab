@@ -1,6 +1,6 @@
 # Stack Overflow Data Processing
 
-This example is complementary to my personal blog post [Clickhouse Tutorial]().
+This example is complementary to my personal blog post [Clickhouse Tutorial](https://tiagokrebs.com/post/clickhouse-tutorial/).
 
 Just because we love it so much we're using the [StackSample: 10% of Stack Overflow Q&A](https://www.kaggle.com/stackoverflow/stacksample) dataset in this example.
 
