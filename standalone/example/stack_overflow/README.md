@@ -81,22 +81,22 @@ Execute a bash session on the server.
 docker exec -it server1 bash
 ```
 
-Then import the CSV files from the Sctack Overflow example.
+Then import the CSV files from the Stack Overflow example.
 ```
 # Simple import
 cat /example/stack_overflow/data/Tags.csv \
-    /usr/bin/clickhouse --client \ 
+    | /usr/bin/clickhouse --client \
     --query="INSERT INTO tutorial.tags FORMAT CSVWithNames"
 
 # Import specific columns
 cat example/stack_overflow/data/Answers.csv \
-    /usr/bin/clickhouse --client \ 
+    | /usr/bin/clickhouse --client \
     --query="INSERT INTO tutorial.answers SELECT Id UInt32, OwnerUserId, toDateTime(parseDateTimeBestEffort(CreationDate)) AS CreationDate, ParentId, Score, Body FROM input('Id UInt32, OwnerUserId String, CreationDate String, ParentId String, Score Int32, Body String') FORMAT CSVWithNames"
 
 # Import ignoring errors
-cat example/stack_overflow/data/Questions.csv \ 
-    | sed "s/'/ /g" | /usr/bin/clickhouse \ 
-    --client --query="INSERT INTO tutorial.questions SELECT Id UInt32, OwnerUserId, toDateTime(parseDateTimeBestEffort(CreationDate)) AS CreationDate, toDateTime(parseDateTimeBestEffort(replaceOne(ClosedDate, 'NA', null))) AS ClosedDate, Score, Title, Body FROM input('Id UInt32, OwnerUserId String, CreationDate String, ClosedDate String, Score Int32, Title String, Body String') FORMAT CSVWithNames" \ 
+cat example/stack_overflow/data/Questions.csv \
+    | sed "s/'/ /g" | /usr/bin/clickhouse \
+    --client --query="INSERT INTO tutorial.questions SELECT Id UInt32, OwnerUserId, toDateTime(parseDateTimeBestEffort(CreationDate)) AS CreationDate, toDateTime(parseDateTimeBestEffort(replaceOne(ClosedDate, 'NA', null))) AS ClosedDate, Score, Title, Body FROM input('Id UInt32, OwnerUserId String, CreationDate String, ClosedDate String, Score Int32, Title String, Body String') FORMAT CSVWithNames" \
     --input_format_allow_errors_ratio=0.5
 ```
 
